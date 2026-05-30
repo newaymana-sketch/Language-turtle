@@ -6,301 +6,282 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>مُعلّمي - Ibrahim Adel</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#0a0e1a; --s1:#111827; --s2:#1a2235; --br:#1e2d45;
-  --ac:#3b82f6; --ac2:#06b6d4; --gd:#f59e0b;
-  --tx:#e2e8f0; --muted:#64748b; --gr:#10b981; --rd:#ef4444;
-  --r:16px;
-}
+:root{--bg:#0a0e1a;--s1:#111827;--s2:#1a2235;--br:#1e2d45;--ac:#3b82f6;--ac2:#06b6d4;--gd:#f59e0b;--tx:#e2e8f0;--mu:#64748b;--gr:#10b981;--rd:#ef4444;--r:16px}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(59,130,246,.08),transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(6,182,212,.06),transparent 60%);pointer-events:none;z-index:0}
 .app{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:16px;min-height:100vh;display:flex;flex-direction:column}
-.header{display:flex;align-items:center;justify-content:space-between;padding:16px 0 20px}
+.hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 0 20px}
 .logo{font-family:'Playfair Display',serif;font-size:22px;background:linear-gradient(135deg,var(--ac),var(--ac2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.logo span{font-family:'Tajawal',sans-serif;font-size:12px;color:var(--muted);display:block;-webkit-text-fill-color:var(--muted)}
-.gear{width:40px;height:40px;border-radius:12px;background:var(--s1);border:1px solid var(--br);color:var(--muted);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.logo span{font-family:'Tajawal',sans-serif;font-size:12px;color:var(--mu);display:block;-webkit-text-fill-color:var(--mu)}
+.gear{width:40px;height:40px;border-radius:12px;background:var(--s1);border:1px solid var(--br);color:var(--mu);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
 .gear:hover{border-color:var(--ac);color:var(--ac)}
-.settings{display:none;background:var(--s1);border:1px solid var(--br);border-radius:var(--r);padding:20px;margin-bottom:16px;animation:sd .3s ease}
-.settings.open{display:block}
+.sbox{display:none;background:var(--s1);border:1px solid var(--br);border-radius:var(--r);padding:20px;margin-bottom:16px;animation:sd .3s ease}
+.sbox.open{display:block}
 @keyframes sd{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.settings h3{font-size:13px;color:var(--muted);margin-bottom:14px}
-.igrp{margin-bottom:12px}
-.igrp label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
-.igrp input{width:100%;background:var(--bg);border:1px solid var(--br);border-radius:10px;padding:10px 14px;color:var(--tx);font-family:'Tajawal',sans-serif;font-size:13px;direction:ltr}
-.igrp input:focus{outline:none;border-color:var(--ac)}
-.sbtn{width:100%;padding:10px;background:var(--ac);border:none;border-radius:10px;color:#fff;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
+.sbox h3{font-size:13px;color:var(--mu);margin-bottom:14px}
+.ig{margin-bottom:12px}
+.ig label{font-size:13px;color:var(--mu);display:block;margin-bottom:6px}
+.ig input{width:100%;background:var(--bg);border:1px solid var(--br);border-radius:10px;padding:10px 14px;color:var(--tx);font-family:'Tajawal',sans-serif;font-size:13px;direction:ltr}
+.ig input:focus{outline:none;border-color:var(--ac)}
+.btn{width:100%;padding:11px;border:none;border-radius:10px;color:#fff;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;margin-bottom:8px}
+.btn-blue{background:var(--ac)}
+.btn-green{background:#059669}
+.btn-blue:hover{background:#2563eb}
+.btn-green:hover{background:#047857}
+.test-res{border-radius:10px;padding:10px 14px;font-size:13px;line-height:1.6;display:none;margin-top:4px}
 .tabs{display:flex;background:var(--s1);border:1px solid var(--br);border-radius:12px;padding:4px;margin-bottom:16px}
-.tab{flex:1;padding:10px;border:none;background:transparent;color:var(--muted);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border-radius:8px;transition:.2s}
+.tab{flex:1;padding:10px;border:none;background:transparent;color:var(--mu);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border-radius:8px;transition:.2s}
 .tab.on{background:var(--ac);color:#fff}
-.upload{border:2px dashed var(--br);border-radius:var(--r);padding:32px 20px;text-align:center;cursor:pointer;transition:.3s;background:var(--s1);margin-bottom:16px}
-.upload:hover{border-color:var(--ac);background:rgba(59,130,246,.05)}
-.upload .ico{font-size:40px;margin-bottom:10px}
-.upload h3{font-size:16px;font-weight:700;margin-bottom:6px}
-.upload p{font-size:13px;color:var(--muted)}
+.upl{border:2px dashed var(--br);border-radius:var(--r);padding:32px 20px;text-align:center;cursor:pointer;transition:.3s;background:var(--s1);margin-bottom:16px}
+.upl:hover{border-color:var(--ac);background:rgba(59,130,246,.05)}
+.upl .ico{font-size:40px;margin-bottom:10px}
+.upl h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.upl p{font-size:13px;color:var(--mu)}
 .prev{border-radius:var(--r);overflow:hidden;margin-bottom:16px;position:relative;display:none}
 .prev.show{display:block}
 .prev img{width:100%;display:block;border-radius:var(--r)}
 .prev-ov{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.8));padding:20px 16px 12px}
-.chg{padding:8px 16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer;backdrop-filter:blur(10px)}
+.chg{padding:8px 16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;cursor:pointer}
 .abtn{width:100%;padding:16px;background:linear-gradient(135deg,var(--ac),var(--ac2));border:none;border-radius:var(--r);color:#fff;font-family:'Tajawal',sans-serif;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;transition:.3s;box-shadow:0 4px 20px rgba(59,130,246,.3)}
 .abtn:hover{transform:translateY(-2px)}
 .abtn:disabled{opacity:.5;transform:none;cursor:not-allowed}
-.lesson-box{background:var(--s1);border:1px solid var(--br);border-radius:var(--r);margin-bottom:16px;display:none;overflow:hidden}
-.lesson-box.show{display:block}
-.lhead{padding:16px 20px;border-bottom:1px solid var(--br);display:flex;align-items:center;justify-content:space-between}
-.lhead h2{font-size:16px;font-weight:700}
-.spk-all{display:flex;align-items:center;gap:6px;padding:8px 14px;background:linear-gradient(135deg,var(--gd),#d97706);border:none;border-radius:10px;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:.2s}
-.spk-all:hover{transform:scale(1.05)}
-.lcontent{padding:16px 20px;max-height:420px;overflow-y:auto}
-.lcontent::-webkit-scrollbar{width:4px}
-.lcontent::-webkit-scrollbar-thumb{background:var(--br);border-radius:2px}
-.wcard{background:var(--s2);border:1px solid var(--br);border-radius:12px;padding:14px;margin-bottom:10px;transition:.2s}
-.wcard:hover{border-color:var(--ac)}
-.wtop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
-.wen{font-size:20px;font-weight:700;color:var(--ac2);font-family:'Playfair Display',serif}
-.wph{font-size:12px;color:var(--muted);margin-top:2px;direction:ltr}
-.wspk{width:34px;height:34px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:8px;color:var(--ac);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;flex-shrink:0}
-.wspk:hover{background:rgba(59,130,246,.2)}
-.wspk.play{animation:pp 1s infinite}
+.lbox{background:var(--s1);border:1px solid var(--br);border-radius:var(--r);margin-bottom:16px;display:none;overflow:hidden}
+.lbox.show{display:block}
+.lhd{padding:16px 20px;border-bottom:1px solid var(--br);display:flex;align-items:center;justify-content:space-between}
+.lhd h2{font-size:16px;font-weight:700}
+.spkall{display:flex;align-items:center;gap:6px;padding:8px 14px;background:linear-gradient(135deg,var(--gd),#d97706);border:none;border-radius:10px;color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:.2s}
+.spkall:hover{transform:scale(1.05)}
+.lcon{padding:16px 20px;max-height:420px;overflow-y:auto}
+.lcon::-webkit-scrollbar{width:4px}
+.lcon::-webkit-scrollbar-thumb{background:var(--br);border-radius:2px}
+.wc{background:var(--s2);border:1px solid var(--br);border-radius:12px;padding:14px;margin-bottom:10px;transition:.2s}
+.wc:hover{border-color:var(--ac)}
+.wt{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+.we{font-size:20px;font-weight:700;color:var(--ac2);font-family:'Playfair Display',serif}
+.wp{font-size:12px;color:var(--mu);margin-top:2px;direction:ltr}
+.ws{width:34px;height:34px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:8px;color:var(--ac);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;flex-shrink:0}
+.ws:hover{background:rgba(59,130,246,.2)}
+.ws.pl{animation:pp 1s infinite}
 @keyframes pp{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-.war{font-size:15px;font-weight:700;color:var(--gd);margin-bottom:6px}
-.wex{font-size:13px;color:var(--muted);line-height:1.6;direction:ltr;text-align:left}
-.wexar{font-size:13px;color:var(--muted);margin-top:4px}
-.notes{margin-top:16px;padding-top:16px;border-top:1px solid var(--br)}
-.notes h3{font-size:14px;color:var(--muted);margin-bottom:10px}
-.note{background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.15);border-radius:10px;padding:12px;margin-bottom:8px;font-size:14px;line-height:1.7}
+.wa{font-size:15px;font-weight:700;color:var(--gd);margin-bottom:6px}
+.wex{font-size:13px;color:var(--mu);line-height:1.6;direction:ltr;text-align:left}
+.wexar{font-size:13px;color:var(--mu);margin-top:4px}
+.nt{margin-top:16px;padding-top:16px;border-top:1px solid var(--br)}
+.nt h3{font-size:14px;color:var(--mu);margin-bottom:10px}
+.ni{background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.15);border-radius:10px;padding:12px;margin-bottom:8px;font-size:14px;line-height:1.7}
 .acts{display:flex;gap:10px;margin-bottom:16px}
 .act{flex:1;padding:12px;border-radius:12px;border:1px solid var(--br);background:var(--s1);color:var(--tx);font-family:'Tajawal',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px}
 .act:hover{border-color:var(--ac);color:var(--ac)}
 .act.pri{background:var(--ac);border-color:var(--ac);color:#fff}
-.act.pri:hover{background:#2563eb}
-.rev-box{background:var(--s1);border:1px solid var(--br);border-radius:var(--r);margin-bottom:16px;display:none;overflow:hidden}
-.rev-box.show{display:block}
-.rhead{padding:16px 20px;border-bottom:1px solid var(--br);display:flex;align-items:center;gap:10px}
-.rhead h2{font-size:16px;font-weight:700;flex:1}
-.rbadge{background:linear-gradient(135deg,var(--gr),#059669);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700}
-.rbody{padding:20px}
-.prog-wrap{margin-bottom:16px}
-.prog-info{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
-.prog-bar{height:6px;background:var(--br);border-radius:3px;overflow:hidden}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:3px;transition:width .4s ease}
-.qcard{background:var(--s2);border:1px solid var(--br);border-radius:12px;padding:20px;margin-bottom:16px;text-align:center}
-.qtype{font-size:12px;color:var(--muted);margin-bottom:8px}
-.qword{font-size:32px;font-weight:700;font-family:'Playfair Display',serif;color:var(--ac2);margin-bottom:4px}
-.qtxt{font-size:15px;color:var(--tx)}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.opt{padding:14px 10px;background:var(--s2);border:2px solid var(--br);border-radius:12px;color:var(--tx);font-family:'Tajawal',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:.2s;text-align:center}
-.opt:hover{border-color:var(--ac);background:rgba(59,130,246,.05)}
-.opt.ok{border-color:var(--gr);background:rgba(16,185,129,.1);color:var(--gr)}
-.opt.no{border-color:var(--rd);background:rgba(239,68,68,.1);color:var(--rd)}
-.vsec{text-align:center;margin-bottom:16px}
-.vhint{font-size:13px;color:var(--muted);margin-bottom:12px}
+.pw{margin-bottom:16px}
+.pi{display:flex;justify-content:space-between;font-size:12px;color:var(--mu);margin-bottom:6px}
+.pb{height:6px;background:var(--br);border-radius:3px;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:3px;transition:width .4s ease}
+.qc{background:var(--s2);border:1px solid var(--br);border-radius:12px;padding:20px;margin-bottom:16px;text-align:center}
+.qt{font-size:12px;color:var(--mu);margin-bottom:8px}
+.qw{font-size:32px;font-weight:700;font-family:'Playfair Display',serif;color:var(--ac2);margin-bottom:4px}
+.qq{font-size:15px;color:var(--tx)}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.op{padding:14px 10px;background:var(--s2);border:2px solid var(--br);border-radius:12px;color:var(--tx);font-family:'Tajawal',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:.2s;text-align:center}
+.op:hover{border-color:var(--ac)}
+.op.ok{border-color:var(--gr);background:rgba(16,185,129,.1);color:var(--gr)}
+.op.no{border-color:var(--rd);background:rgba(239,68,68,.1);color:var(--rd)}
+.vs{text-align:center;margin-bottom:16px}
+.vh{font-size:13px;color:var(--mu);margin-bottom:12px}
 .rec{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--ac2));border:none;color:#fff;font-size:28px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:.3s;box-shadow:0 4px 20px rgba(59,130,246,.4)}
 .rec.go{background:linear-gradient(135deg,var(--rd),#dc2626);box-shadow:0 4px 20px rgba(239,68,68,.5);animation:rp 1s infinite}
 @keyframes rp{0%,100%{box-shadow:0 4px 20px rgba(239,68,68,.5)}50%{box-shadow:0 4px 35px rgba(239,68,68,.8),0 0 0 10px rgba(239,68,68,.1)}}
-.rlbl{font-size:12px;color:var(--muted);margin-top:8px}
-.eval{background:var(--s2);border-radius:12px;padding:14px;margin-top:12px;font-size:14px;line-height:1.7;display:none}
-.eval.show{display:block}
+.rl{font-size:12px;color:var(--mu);margin-top:8px}
+.ev{background:var(--s2);border-radius:12px;padding:14px;margin-top:12px;font-size:14px;line-height:1.7;display:none}
+.ev.show{display:block}
 .fb{border-radius:12px;padding:14px;margin-bottom:16px;font-size:14px;line-height:1.7;display:none}
 .fb.show{display:block}
 .fb.ok{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);color:var(--gr)}
 .fb.err{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#fca5a5}
-.fb.inf{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);color:#93c5fd}
-.sc-card{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(6,182,212,.1));border:1px solid rgba(59,130,246,.2);border-radius:var(--r);padding:24px;text-align:center;margin-bottom:16px;display:none}
-.sc-card.show{display:block}
-.sc-em{font-size:48px;margin-bottom:12px}
-.sc-num{font-size:48px;font-weight:900;color:var(--ac);font-family:'Playfair Display',serif}
-.sc-lbl{font-size:14px;color:var(--muted);margin-top:4px}
-.sc-det{margin-top:16px;font-size:14px;color:var(--muted);line-height:1.8}
+.sc{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(6,182,212,.1));border:1px solid rgba(59,130,246,.2);border-radius:var(--r);padding:24px;text-align:center;margin-bottom:16px;display:none}
+.sc.show{display:block}
+.se{font-size:48px;margin-bottom:12px}
+.sn{font-size:48px;font-weight:900;color:var(--ac);font-family:'Playfair Display',serif}
+.sl{font-size:14px;color:var(--mu);margin-top:4px}
+.sd{margin-top:16px;font-size:14px;color:var(--mu);line-height:1.8}
 .ov{position:fixed;inset:0;background:rgba(10,14,26,.85);backdrop-filter:blur(10px);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:100}
 .ov.show{display:flex}
-.spin{width:56px;height:56px;border:3px solid rgba(59,130,246,.2);border-top-color:var(--ac);border-radius:50%;animation:sp .8s linear infinite;margin-bottom:16px}
-@keyframes sp{to{transform:rotate(360deg)}}
-.ov-txt{font-size:15px;color:var(--muted)}
+.sp{width:56px;height:56px;border:3px solid rgba(59,130,246,.2);border-top-color:var(--ac);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ot{font-size:15px;color:var(--mu)}
 .hidden{display:none!important}
 </style>
 </head>
 <body>
 <div class="app">
-
-  <div class="header">
+  <div class="hdr">
     <div class="logo">مُعلّمي<span>Ibrahim Adel Vocabulary Tutor</span></div>
     <button class="gear" onclick="toggleS()">⚙️</button>
   </div>
 
-  <div class="settings" id="settingsPanel">
+  <div class="sbox" id="sbox">
     <h3>🔑 مفاتيح API</h3>
-    <div class="igrp">
-      <label>Google Gemini API Key</label>
-      <input type="password" id="geminiKey" placeholder="AIza...">
+    <div class="ig">
+      <label>Groq API Key</label>
+      <input type="password" id="groqKey" placeholder="gsk_...">
     </div>
-    <div class="igrp">
-      <label>ElevenLabs API Key (للصوت)</label>
+    <div class="ig">
+      <label>ElevenLabs API Key (اختياري - للصوت)</label>
       <input type="password" id="elevenKey" placeholder="sk_...">
     </div>
-    <button class="sbtn" onclick="saveKeys()">💾 حفظ المفاتيح</button>
-    <button class="sbtn" onclick="testKey()" style="margin-top:8px;background:#059669">🔍 اختبر المفتاح الآن</button>
-    <div id="testResult" style="margin-top:10px;font-size:13px;display:none;padding:10px;border-radius:8px"></div>
+    <button class="btn btn-blue" onclick="saveKeys()">💾 حفظ المفاتيح</button>
+    <button class="btn btn-green" onclick="testKey()">🔍 اختبر المفتاح الآن</button>
+    <div class="test-res" id="testRes"></div>
   </div>
 
   <div class="tabs">
-    <button class="tab on" onclick="switchTab('learn')">📚 تعلّم</button>
-    <button class="tab" onclick="switchTab('review')">✏️ مراجعة</button>
+    <button class="tab on" onclick="sw('learn')">📚 تعلّم</button>
+    <button class="tab" onclick="sw('review')">✏️ مراجعة</button>
   </div>
 
-  <!-- LEARN TAB -->
   <div id="learnTab">
-    <div class="upload" id="uploadArea" onclick="document.getElementById('fi').click()">
+    <div class="upl" id="upl" onclick="document.getElementById('fi').click()">
       <input type="file" id="fi" accept="image/*" onchange="handleFile(event)" style="display:none">
       <div class="ico">📷</div>
       <h3>صوّر صفحة الدرس</h3>
-      <p>اضغط هنا لاختيار صورة أو التقاطها بالكاميرا</p>
+      <p>اضغط هنا لاختيار صورة أو التقاطها</p>
     </div>
-
-    <div class="prev" id="prevBox">
+    <div class="prev" id="prev">
       <img id="prevImg" src="" alt="">
       <div class="prev-ov">
         <button class="chg" onclick="document.getElementById('fi').click()">🔄 تغيير الصورة</button>
       </div>
     </div>
-
-    <button class="abtn" id="aBtn" onclick="analyzeLesson()" disabled>
-      📖 اشرح لي الدرس
-    </button>
-
-    <div class="lesson-box" id="lessonBox">
-      <div class="lhead">
+    <button class="abtn" id="aBtn" onclick="analyze()" disabled>📖 اشرح لي الدرس</button>
+    <div class="lbox" id="lbox">
+      <div class="lhd">
         <h2>📚 <span id="ltitle">الدرس</span></h2>
-        <button class="spk-all" onclick="speakAll()">🔊 استمع</button>
+        <button class="spkall" onclick="speakAll()">🔊 استمع</button>
       </div>
-      <div class="lcontent" id="lcontent"></div>
+      <div class="lcon" id="lcon"></div>
     </div>
-
     <div class="acts" id="lacts" style="display:none">
-      <button class="act" onclick="switchTab('review');startReview()">✏️ ابدأ المراجعة</button>
+      <button class="act" onclick="sw('review');startRev()">✏️ ابدأ المراجعة</button>
       <button class="act" onclick="speakAll()">🔊 أعد القراءة</button>
     </div>
   </div>
 
-  <!-- REVIEW TAB -->
   <div id="reviewTab" class="hidden">
-    <div id="noLesson" style="text-align:center;padding:40px 20px;color:var(--muted)">
+    <div id="noLes" style="text-align:center;padding:40px 20px;color:var(--mu)">
       <div style="font-size:48px;margin-bottom:16px">📚</div>
       <p>حلّل درساً أولاً من تبويب "تعلّم"</p>
     </div>
-
     <div id="revBody" class="hidden">
-      <div class="prog-wrap">
-        <div class="prog-info">
-          <span id="progTxt">السؤال 1 من 10</span>
-          <span id="scoreTxt">النتيجة: 0</span>
-        </div>
-        <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+      <div class="pw">
+        <div class="pi"><span id="progTxt">السؤال 1 من 10</span><span id="scoreTxt">النتيجة: 0</span></div>
+        <div class="pb"><div class="pf" id="pf" style="width:0%"></div></div>
       </div>
-
-      <div class="qcard">
-        <div class="qtype" id="qtype">اختبار المعنى</div>
-        <div class="qword" id="qword">word</div>
-        <div class="qtxt" id="qtxt">ما معنى هذه الكلمة؟</div>
+      <div class="qc">
+        <div class="qt" id="qt">اختبار المعنى</div>
+        <div class="qw" id="qw">word</div>
+        <div class="qq" id="qq">ما معنى هذه الكلمة؟</div>
       </div>
-
-      <div class="vsec hidden" id="vsec">
-        <div class="vhint">اضغط وانطق الكلمة بصوت واضح</div>
+      <div class="vs hidden" id="vs">
+        <div class="vh">اضغط وانطق الكلمة بصوت واضح</div>
         <button class="rec" id="recBtn" onclick="toggleRec()">🎤</button>
-        <div class="rlbl" id="rlbl">اضغط للتسجيل</div>
-        <div class="eval" id="evalBox"></div>
+        <div class="rl" id="rl">اضغط للتسجيل</div>
+        <div class="ev" id="ev"></div>
       </div>
-
-      <div class="opts hidden" id="optsGrid"></div>
-
-      <div class="fb" id="fbBox"></div>
-      <button class="act pri hidden" id="nextBtn" onclick="nextQ()" style="width:100%;margin-bottom:16px">التالي ←</button>
+      <div class="og hidden" id="og"></div>
+      <div class="fb" id="fb"></div>
+      <button class="act pri hidden" id="nxtBtn" onclick="nextQ()" style="width:100%;margin-bottom:16px">التالي ←</button>
     </div>
-
-    <div class="sc-card" id="scoreCard">
-      <div class="sc-em" id="scEm">🎉</div>
-      <div class="sc-num" id="scNum">0/10</div>
-      <div class="sc-lbl">نتيجتك النهائية</div>
-      <div class="sc-det" id="scDet"></div>
+    <div class="sc" id="scCard">
+      <div class="se" id="se">🎉</div>
+      <div class="sn" id="sn">0/10</div>
+      <div class="sl">نتيجتك النهائية</div>
+      <div class="sd" id="sdет"></div>
       <div style="display:flex;gap:10px;margin-top:20px">
         <button class="act pri" onclick="restartRev()" style="flex:1">🔄 أعد المراجعة</button>
-        <button class="act" onclick="switchTab('learn')" style="flex:1">📚 درس جديد</button>
+        <button class="act" onclick="sw('learn')" style="flex:1">📚 درس جديد</button>
       </div>
     </div>
   </div>
 </div>
 
 <div class="ov" id="ov">
-  <div class="spin"></div>
-  <div class="ov-txt" id="ovTxt">جاري تحليل الدرس...</div>
+  <div class="sp"></div>
+  <div class="ot" id="ot">جاري التحليل...</div>
 </div>
 
 <script>
 const S = {
-  gemini: localStorage.getItem('gk') || '',
-  eleven: localStorage.getItem('ek') || '',
-  img64: null,
-  lesson: null,
-  questions: [],
-  qIdx: 0,
-  score: 0,
-  recording: false,
-  recorder: null,
-  chunks: [],
-  audio: null
+  groq: localStorage.getItem('groq') || '',
+  eleven: localStorage.getItem('eleven') || '',
+  img64: null, imgType: 'image/jpeg',
+  lesson: null, questions: [], qIdx: 0, score: 0,
+  recording: false, recorder: null, chunks: [], audio: null
 };
 
 window.onload = () => {
-  if (S.gemini) document.getElementById('geminiKey').value = S.gemini;
+  if (S.groq) document.getElementById('groqKey').value = S.groq;
   if (S.eleven) document.getElementById('elevenKey').value = S.eleven;
-  if (!S.gemini) document.getElementById('settingsPanel').classList.add('open');
+  if (!S.groq) document.getElementById('sbox').classList.add('open');
 };
 
-function toggleS() { document.getElementById('settingsPanel').classList.toggle('open'); }
+function toggleS() { document.getElementById('sbox').classList.toggle('open'); }
 
 function saveKeys() {
-  const g = document.getElementById('geminiKey').value.trim();
+  const g = document.getElementById('groqKey').value.trim();
   const e = document.getElementById('elevenKey').value.trim();
-  if (!g) { alert('أدخل مفتاح Gemini'); return; }
-  S.gemini = g; S.eleven = e;
-  localStorage.setItem('gk', g);
-  if (e) localStorage.setItem('ek', e);
-  document.getElementById('settingsPanel').classList.remove('open');
+  if (!g) { alert('أدخل مفتاح Groq'); return; }
+  S.groq = g; S.eleven = e;
+  localStorage.setItem('groq', g);
+  if (e) localStorage.setItem('eleven', e);
+  document.getElementById('sbox').classList.remove('open');
+  showRes('✅ تم حفظ المفاتيح', 'ok');
 }
 
 async function testKey() {
-  const g = document.getElementById("geminiKey").value.trim();
-  const box = document.getElementById("testResult");
-  if (!g) { alert("أدخل المفتاح أولاً"); return; }
-  box.style.display = "block";
-  box.style.background = "rgba(59,130,246,.1)";
-  box.style.color = "#93c5fd";
-  box.textContent = "⏳ جاري الاختبار...";
+  const g = document.getElementById('groqKey').value.trim();
+  if (!g) { alert('أدخل المفتاح أولاً'); return; }
+  showRes('⏳ جاري الاختبار...', 'info');
   try {
-    const d = await geminiCall(g, { contents: [{ parts: [{ text: "say hi" }] }] });
-    box.style.background = "rgba(16,185,129,.1)";
-    box.style.color = "#6ee7b7";
-    box.textContent = "✅ يعمل! النموذج: " + (S.activeModel || "gemini");
-    S.gemini = g; localStorage.setItem("gk", g);
+    const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + g },
+      body: JSON.stringify({
+        model: 'llama-3.2-11b-vision-preview',
+        messages: [{ role: 'user', content: 'قل مرحبا فقط' }],
+        max_tokens: 10
+      })
+    });
+    const d = await r.json();
+    if (d.error) throw new Error(d.error.message);
+    S.groq = g; localStorage.setItem('groq', g);
+    showRes('✅ المفتاح يعمل بشكل مثالي! جاهز للاستخدام 🎉', 'ok');
   } catch(e) {
-    box.style.background = "rgba(239,68,68,.1)";
-    box.style.color = "#fca5a5";
-    box.textContent = "❌ خطأ: " + e.message;
+    showRes('❌ خطأ: ' + e.message, 'err');
   }
 }
 
-function switchTab(t) {
-  document.querySelectorAll('.tab').forEach((b,i) => b.classList.toggle('on', (t==='learn'&&i===0)||(t==='review'&&i===1)));
-  document.getElementById('learnTab').classList.toggle('hidden', t!=='learn');
-  document.getElementById('reviewTab').classList.toggle('hidden', t!=='review');
+function showRes(txt, type) {
+  const b = document.getElementById('testRes');
+  b.style.display = 'block';
+  b.style.background = type==='ok'?'rgba(16,185,129,.1)':type==='err'?'rgba(239,68,68,.1)':'rgba(59,130,246,.1)';
+  b.style.border = '1px solid ' + (type==='ok'?'rgba(16,185,129,.2)':type==='err'?'rgba(239,68,68,.2)':'rgba(59,130,246,.2)');
+  b.style.color = type==='ok'?'#6ee7b7':type==='err'?'#fca5a5':'#93c5fd';
+  b.textContent = txt;
+}
+
+function sw(t) {
+  document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('on',(t==='learn'&&i===0)||(t==='review'&&i===1)));
+  document.getElementById('learnTab').classList.toggle('hidden',t!=='learn');
+  document.getElementById('reviewTab').classList.toggle('hidden',t!=='review');
 }
 
 function handleFile(e) {
   const f = e.target.files[0];
   if (!f) return;
+  S.imgType = f.type || 'image/jpeg';
   const r = new FileReader();
   r.onload = ev => {
     const img = new Image();
@@ -308,17 +289,14 @@ function handleFile(e) {
       const c = document.createElement('canvas');
       const MAX = 1024;
       let w = img.width, h = img.height;
-      if (w > MAX || h > MAX) {
-        if (w > h) { h = Math.round(h*MAX/w); w = MAX; }
-        else { w = Math.round(w*MAX/h); h = MAX; }
-      }
-      c.width = w; c.height = h;
-      c.getContext('2d').drawImage(img, 0, 0, w, h);
-      const comp = c.toDataURL('image/jpeg', 0.8);
+      if (w>MAX||h>MAX) { if(w>h){h=Math.round(h*MAX/w);w=MAX;}else{w=Math.round(w*MAX/h);h=MAX;} }
+      c.width=w; c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      const comp = c.toDataURL('image/jpeg',.8);
       S.img64 = comp.split(',')[1];
       document.getElementById('prevImg').src = comp;
-      document.getElementById('prevBox').classList.add('show');
-      document.getElementById('uploadArea').style.display = 'none';
+      document.getElementById('prev').classList.add('show');
+      document.getElementById('upl').style.display = 'none';
       document.getElementById('aBtn').disabled = false;
     };
     img.src = ev.target.result;
@@ -326,67 +304,52 @@ function handleFile(e) {
   r.readAsDataURL(f);
 }
 
-
-// Auto-detect working Gemini model
-const GEMINI_MODELS = [
-  'gemini-2.0-flash',
-  'gemini-2.0-flash-lite',
-  'gemini-1.5-flash',
-  'gemini-1.5-flash-8b',
-  'gemini-pro-vision'
-];
-
-async function geminiCall(key, body) {
-  for (const model of GEMINI_MODELS) {
-    try {
-      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-      const d = await r.json();
-      if (d.error) continue; // try next model
-      S.activeModel = model;
-      return d;
-    } catch(e) { continue; }
-  }
-  throw new Error('لا يوجد نموذج Gemini متاح لهذا المفتاح. تأكد من تفعيل الـ API في aistudio.google.com');
+async function groqCall(messages, withImg=false) {
+  const body = {
+    model: withImg ? 'llama-3.2-11b-vision-preview' : 'llama-3.3-70b-versatile',
+    messages,
+    max_tokens: 2000,
+    temperature: 0.2
+  };
+  const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + S.groq },
+    body: JSON.stringify(body)
+  });
+  const d = await r.json();
+  if (d.error) throw new Error(d.error.message);
+  return d.choices[0].message.content;
 }
 
-async function analyzeLesson() {
-  if (!S.gemini) { alert('أدخل مفتاح Gemini من الإعدادات ⚙️'); toggleS(); return; }
+async function analyze() {
+  if (!S.groq) { alert('أدخل مفتاح Groq من الإعدادات ⚙️'); toggleS(); return; }
   if (!S.img64) { alert('اختر صورة أولاً'); return; }
-
   showOv('⏳ جاري قراءة وتحليل الدرس...');
   document.getElementById('aBtn').disabled = true;
 
   const prompt = `أنت مُعلّم لغة إنجليزية. حلّل هذه الصفحة من كتاب مفردات.
-أعطني JSON فقط بدون أي نص إضافي أو backticks:
-{"title":"عنوان الدرس","words":[{"english":"كلمة","phonetic":"نطق","arabic":"معنى","example":"جملة إنجليزية","example_ar":"ترجمة"}],"grammar_notes":["ملاحظة"],"story_summary":"ملخص النص إن وجد"}`;
+أعطني JSON فقط بدون أي نص إضافي أو backticks أو markdown:
+{"title":"عنوان الدرس","words":[{"english":"كلمة","phonetic":"نطق","arabic":"معنى","example":"جملة إنجليزية","example_ar":"ترجمة"}],"grammar_notes":["ملاحظة نحوية"],"story_summary":"ملخص النص إن وجد وإلا اتركه فارغاً"}`;
 
   try {
-    const d = await geminiCall(S.gemini, {
-      contents: [{
-        parts: [
-          { inline_data: { mime_type: 'image/jpeg', data: S.img64 } },
-          { text: prompt }
-        ]
-      }],
-      generationConfig: { temperature: 0.2, maxOutputTokens: 2000 }
-    });
+    const txt = await groqCall([{
+      role: 'user',
+      content: [
+        { type: 'image_url', image_url: { url: `data:image/jpeg;base64,${S.img64}` } },
+        { type: 'text', text: prompt }
+      ]
+    }], true);
 
-    let txt = d.candidates[0].content.parts[0].text;
-    txt = txt.replace(/```json|```/g, '').trim();
-    S.lesson = JSON.parse(txt);
+    let clean = txt.replace(/```json|```/g,'').trim();
+    S.lesson = JSON.parse(clean);
     hideOv();
     renderLesson();
-    generateQs();
-    setTimeout(() => tts(`أهلاً! سأشرح لك درس ${S.lesson.title}. استمع جيداً.`), 600);
-
-  } catch (err) {
+    genQs();
+    setTimeout(()=>tts(`أهلاً! سأشرح لك درس ${S.lesson.title}. استمع جيداً للكلمات والأمثلة.`), 600);
+  } catch(err) {
     hideOv();
     document.getElementById('aBtn').disabled = false;
-    alert('خطأ: ' + err.message + '\n\nتأكد من صحة مفتاح Gemini');
+    alert('خطأ: ' + err.message + '\n\nتأكد من صحة مفتاح Groq واضغط اختبر المفتاح أولاً');
   }
 }
 
@@ -394,36 +357,35 @@ function renderLesson() {
   const { title, words, grammar_notes, story_summary } = S.lesson;
   document.getElementById('ltitle').textContent = title;
   let h = '';
-  words.forEach((w, i) => {
-    h += `<div class="wcard">
-      <div class="wtop">
-        <div><div class="wen">${i+1}. ${w.english}</div><div class="wph">${w.phonetic}</div></div>
-        <button class="wspk" onclick="spkWord('${w.english.replace(/'/g,"\\'")}',this)">🔊</button>
+  words.forEach((w,i) => {
+    h += `<div class="wc">
+      <div class="wt">
+        <div><div class="we">${i+1}. ${w.english}</div><div class="wp">${w.phonetic}</div></div>
+        <button class="ws" onclick="spkW('${w.english.replace(/'/g,"\\'")}',this)">🔊</button>
       </div>
-      <div class="war">📖 ${w.arabic}</div>
+      <div class="wa">📖 ${w.arabic}</div>
       <div class="wex">✅ ${w.example}</div>
       <div class="wexar">${w.example_ar}</div>
     </div>`;
   });
   if (grammar_notes?.length) {
-    h += `<div class="notes"><h3>✏️ ملاحظات لغوية</h3>`;
-    grammar_notes.forEach(n => h += `<div class="note">${n}</div>`);
+    h += `<div class="nt"><h3>✏️ ملاحظات لغوية</h3>`;
+    grammar_notes.forEach(n => h += `<div class="ni">${n}</div>`);
     h += `</div>`;
   }
-  if (story_summary) h += `<div class="notes"><h3>📖 ملخص النص</h3><div class="note">${story_summary}</div></div>`;
-  document.getElementById('lcontent').innerHTML = h;
-  document.getElementById('lessonBox').classList.add('show');
+  if (story_summary) h += `<div class="nt"><h3>📖 ملخص النص</h3><div class="ni">${story_summary}</div></div>`;
+  document.getElementById('lcon').innerHTML = h;
+  document.getElementById('lbox').classList.add('show');
   document.getElementById('lacts').style.display = 'flex';
 }
 
-// TTS via ElevenLabs or browser fallback
 async function tts(text) {
   if (S.eleven) {
     try {
       const r = await fetch('https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'xi-api-key': S.eleven },
-        body: JSON.stringify({ text, model_id: 'eleven_multilingual_v2', voice_settings: { stability:.5, similarity_boost:.75 } })
+        method:'POST',
+        headers:{'Content-Type':'application/json','xi-api-key':S.eleven},
+        body:JSON.stringify({text,model_id:'eleven_multilingual_v2',voice_settings:{stability:.5,similarity_boost:.75}})
       });
       if (r.ok) {
         const blob = await r.blob();
@@ -435,181 +397,173 @@ async function tts(text) {
       }
     } catch(e) {}
   }
-  // fallback: browser TTS
   if ('speechSynthesis' in window) {
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = text.match(/[\u0600-\u06FF]/) ? 'ar-SA' : 'en-US';
+    u.lang = /[\u0600-\u06FF]/.test(text) ? 'ar-SA' : 'en-US';
     u.rate = 0.85;
     speechSynthesis.cancel();
     speechSynthesis.speak(u);
   }
 }
 
-async function spkWord(word, btn) {
-  btn.classList.add('play');
-  const a = await tts(word);
-  if (a) a.onended = () => btn.classList.remove('play');
-  else setTimeout(() => btn.classList.remove('play'), 1500);
+async function spkW(word, btn) {
+  btn.classList.add('pl');
+  await tts(word);
+  setTimeout(()=>btn.classList.remove('pl'), 1500);
 }
 
 async function speakAll() {
   if (!S.lesson) return;
-  const btn = document.querySelector('.spk-all');
-  btn.textContent = '⏸ جاري...'; btn.disabled = true;
+  const b = document.querySelector('.spkall');
+  b.textContent='⏸ جاري...'; b.disabled=true;
   let t = `درس ${S.lesson.title}. `;
-  S.lesson.words.forEach(w => { t += `${w.english}. ${w.arabic}. ${w.example}. `; });
-  if (S.lesson.story_summary) t += `ملخص: ${S.lesson.story_summary}`;
-  const a = await tts(t);
-  const done = () => { btn.textContent = '🔊 استمع'; btn.disabled = false; };
-  if (a) a.onended = done; else setTimeout(done, 3000);
+  S.lesson.words.forEach(w => { t+=`${w.english}. ${w.arabic}. ${w.example}. `; });
+  if (S.lesson.story_summary) t+=`ملخص: ${S.lesson.story_summary}`;
+  await tts(t);
+  b.textContent='🔊 استمع'; b.disabled=false;
 }
 
-// Questions
-function generateQs() {
+function genQs() {
   if (!S.lesson) return;
   const ws = S.lesson.words;
   const q = [];
   ws.slice(0,5).forEach(w => {
-    const wrong = ws.filter(x => x.arabic !== w.arabic).sort(() => Math.random()-.5).slice(0,3);
-    const opts = [...wrong.map(x => x.arabic), w.arabic].sort(() => Math.random()-.5);
-    q.push({ type:'mcq', q:w.english, ans:w.arabic, opts, word:w });
+    const wrong = ws.filter(x=>x.arabic!==w.arabic).sort(()=>Math.random()-.5).slice(0,3);
+    const opts = [...wrong.map(x=>x.arabic),w.arabic].sort(()=>Math.random()-.5);
+    q.push({type:'mcq',q:w.english,ans:w.arabic,opts,word:w});
   });
-  ws.slice(0,5).forEach(w => q.push({ type:'pron', q:w.english, ans:w.english, word:w }));
-  S.questions = q.sort(() => Math.random()-.5).slice(0,10);
-  S.qIdx = 0; S.score = 0;
+  ws.slice(0,5).forEach(w => q.push({type:'pron',q:w.english,ans:w.english,word:w}));
+  S.questions = q.sort(()=>Math.random()-.5).slice(0,10);
+  S.qIdx=0; S.score=0;
 }
 
-function startReview() {
+function startRev() {
   if (!S.lesson) return;
-  document.getElementById('noLesson').classList.add('hidden');
+  document.getElementById('noLes').classList.add('hidden');
   document.getElementById('revBody').classList.remove('hidden');
-  document.getElementById('scoreCard').classList.remove('show');
-  S.qIdx = 0; S.score = 0;
-  showQ();
+  document.getElementById('scCard').classList.remove('show');
+  S.qIdx=0; S.score=0; showQ();
 }
 
 function showQ() {
-  const tot = S.questions.length;
-  const i = S.qIdx;
-  if (i >= tot) { showFinal(); return; }
-  const q = S.questions[i];
-  document.getElementById('progTxt').textContent = `السؤال ${i+1} من ${tot}`;
-  document.getElementById('scoreTxt').textContent = `النتيجة: ${Math.round(S.score)}`;
-  document.getElementById('progFill').style.width = `${(i/tot)*100}%`;
-  document.getElementById('fbBox').classList.remove('show');
-  document.getElementById('nextBtn').classList.add('hidden');
-  document.getElementById('evalBox').classList.remove('show');
-  if (q.type === 'mcq') {
-    document.getElementById('qtype').textContent = '🎯 اختر المعنى الصحيح';
-    document.getElementById('qword').textContent = q.q;
-    document.getElementById('qtxt').textContent = 'ما معنى هذه الكلمة؟';
-    document.getElementById('vsec').classList.add('hidden');
-    document.getElementById('optsGrid').classList.remove('hidden');
-    document.getElementById('optsGrid').innerHTML = q.opts.map(o =>
-      `<button class="opt" onclick="checkAns('${o.replace(/'/g,"\\'")}',this)">${o}</button>`
+  const tot=S.questions.length, i=S.qIdx;
+  if (i>=tot) { showFinal(); return; }
+  const q=S.questions[i];
+  document.getElementById('progTxt').textContent=`السؤال ${i+1} من ${tot}`;
+  document.getElementById('scoreTxt').textContent=`النتيجة: ${Math.round(S.score)}`;
+  document.getElementById('pf').style.width=`${(i/tot)*100}%`;
+  document.getElementById('fb').classList.remove('show');
+  document.getElementById('nxtBtn').classList.add('hidden');
+  document.getElementById('ev').classList.remove('show');
+  if (q.type==='mcq') {
+    document.getElementById('qt').textContent='🎯 اختر المعنى الصحيح';
+    document.getElementById('qw').textContent=q.q;
+    document.getElementById('qq').textContent='ما معنى هذه الكلمة؟';
+    document.getElementById('vs').classList.add('hidden');
+    document.getElementById('og').classList.remove('hidden');
+    document.getElementById('og').innerHTML=q.opts.map(o=>
+      `<button class="op" onclick="checkAns('${o.replace(/'/g,"\\'")}',this)">${o}</button>`
     ).join('');
+    tts(q.q);
   } else {
-    document.getElementById('qtype').textContent = '🎤 تحقق من النطق';
-    document.getElementById('qword').textContent = q.q;
-    document.getElementById('qtxt').textContent = 'انطق هذه الكلمة بوضوح';
-    document.getElementById('vsec').classList.remove('hidden');
-    document.getElementById('optsGrid').classList.add('hidden');
-    document.getElementById('rlbl').textContent = 'اضغط للتسجيل';
+    document.getElementById('qt').textContent='🎤 تحقق من النطق';
+    document.getElementById('qw').textContent=q.q;
+    document.getElementById('qq').textContent='انطق هذه الكلمة بوضوح';
+    document.getElementById('vs').classList.remove('hidden');
+    document.getElementById('og').classList.add('hidden');
+    document.getElementById('rl').textContent='اضغط للتسجيل';
     document.getElementById('recBtn').classList.remove('go');
-    document.getElementById('recBtn').textContent = '🎤';
-    setTimeout(() => tts(q.q), 300);
+    document.getElementById('recBtn').textContent='🎤';
+    setTimeout(()=>tts(q.q),300);
   }
 }
 
-function checkAns(sel, btn) {
-  const q = S.questions[S.qIdx];
-  document.querySelectorAll('.opt').forEach(b => b.disabled = true);
-  if (sel === q.ans) {
+function checkAns(sel,btn) {
+  const q=S.questions[S.qIdx];
+  document.querySelectorAll('.op').forEach(b=>b.disabled=true);
+  if (sel===q.ans) {
     btn.classList.add('ok'); S.score++;
-    showFb('✅ ممتاز! إجابة صحيحة', 'ok');
+    showFb('✅ ممتاز! إجابة صحيحة','ok');
     tts('ممتاز، إجابة صحيحة!');
   } else {
     btn.classList.add('no');
-    document.querySelectorAll('.opt').forEach(b => { if(b.textContent===q.ans) b.classList.add('ok'); });
-    showFb(`❌ الإجابة الصحيحة: ${q.ans}`, 'err');
+    document.querySelectorAll('.op').forEach(b=>{if(b.textContent===q.ans)b.classList.add('ok');});
+    showFb(`❌ الإجابة الصحيحة: ${q.ans}`,'err');
     tts(`الإجابة الصحيحة هي ${q.ans}`);
   }
-  document.getElementById('nextBtn').classList.remove('hidden');
-  document.getElementById('scoreTxt').textContent = `النتيجة: ${Math.round(S.score)}`;
+  document.getElementById('nxtBtn').classList.remove('hidden');
+  document.getElementById('scoreTxt').textContent=`النتيجة: ${Math.round(S.score)}`;
 }
 
 function nextQ() { S.qIdx++; showQ(); }
 
-// Recording
 async function toggleRec() {
   if (S.recording) { stopRec(); }
   else {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      S.chunks = [];
-      S.recorder = new MediaRecorder(stream);
-      S.recorder.ondataavailable = e => S.chunks.push(e.data);
-      S.recorder.onstop = processRec;
+      const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+      S.chunks=[];
+      S.recorder=new MediaRecorder(stream);
+      S.recorder.ondataavailable=e=>S.chunks.push(e.data);
+      S.recorder.onstop=processRec;
       S.recorder.start();
-      S.recording = true;
+      S.recording=true;
       document.getElementById('recBtn').classList.add('go');
-      document.getElementById('recBtn').textContent = '⏹';
-      document.getElementById('rlbl').textContent = 'جاري التسجيل... اضغط للإيقاف';
+      document.getElementById('recBtn').textContent='⏹';
+      document.getElementById('rl').textContent='جاري التسجيل... اضغط للإيقاف';
     } catch(e) { alert('السماح بالوصول للميكروفون مطلوب'); }
   }
 }
 
 function stopRec() {
-  if (S.recorder) { S.recorder.stop(); S.recorder.stream.getTracks().forEach(t => t.stop()); }
-  S.recording = false;
+  if (S.recorder) { S.recorder.stop(); S.recorder.stream.getTracks().forEach(t=>t.stop()); }
+  S.recording=false;
   document.getElementById('recBtn').classList.remove('go');
-  document.getElementById('recBtn').textContent = '🎤';
-  document.getElementById('rlbl').textContent = 'جاري التحليل...';
+  document.getElementById('recBtn').textContent='🎤';
+  document.getElementById('rl').textContent='جاري التحليل...';
 }
 
 async function processRec() {
-  const q = S.questions[S.qIdx];
+  const q=S.questions[S.qIdx];
   showOv('جاري تقييم نطقك...');
   try {
-    const d = await geminiCall(S.gemini, {
-      contents: [{ parts: [{ text: `قدّم نصائح نطق مختصرة ومشجعة لكلمة "${q.q}" باللغة العربية في 2-3 جمل. اذكر: النطق الصحيح بالحروف العربية، الصوت الصعب، وجملة تشجيع.` }] }]
-    });
-    const txt = d.candidates[0].content.parts[0].text;
-    const box = document.getElementById('evalBox');
-    box.innerHTML = `<strong style="color:var(--ac)">🎤 نصائح النطق:</strong><br>${txt}`;
+    const txt = await groqCall([{
+      role:'user',
+      content:`قدّم نصائح نطق مختصرة ومشجعة لكلمة "${q.q}" في 2-3 جمل بالعربية. اذكر: النطق بالحروف العربية، الصوت الصعب، جملة تشجيع.`
+    }], false);
+    const box=document.getElementById('ev');
+    box.innerHTML=`<strong style="color:var(--ac)">🎤 نصائح النطق:</strong><br>${txt}`;
     box.classList.add('show');
     tts(txt);
-    S.score += 0.5;
+    S.score+=0.5;
   } catch(e) {}
   hideOv();
-  document.getElementById('rlbl').textContent = 'اضغط للتسجيل مجدداً';
-  document.getElementById('nextBtn').classList.remove('hidden');
+  document.getElementById('rl').textContent='اضغط للتسجيل مجدداً';
+  document.getElementById('nxtBtn').classList.remove('hidden');
+  document.getElementById('scoreTxt').textContent=`النتيجة: ${Math.round(S.score)}`;
 }
 
 function showFinal() {
   document.getElementById('revBody').classList.add('hidden');
-  const sc = document.getElementById('scoreCard');
-  sc.classList.add('show');
-  const tot = S.questions.length;
-  const s = Math.round(S.score);
-  const pct = Math.round((s/tot)*100);
-  document.getElementById('scNum').textContent = `${s}/${tot}`;
-  document.getElementById('scEm').textContent = pct>=80?'🏆':pct>=60?'⭐':'💪';
-  const msg = pct>=80?'رائع! أتقنت الدرس بشكل ممتاز!':pct>=60?'جيد جداً! راجع الكلمات الصعبة.':'لا تيأس! راجع الدرس مرة أخرى.';
-  document.getElementById('scDet').textContent = msg;
+  document.getElementById('scCard').classList.add('show');
+  const tot=S.questions.length, s=Math.round(S.score), pct=Math.round((s/tot)*100);
+  document.getElementById('sn').textContent=`${s}/${tot}`;
+  document.getElementById('se').textContent=pct>=80?'🏆':pct>=60?'⭐':'💪';
+  const msg=pct>=80?'رائع! أتقنت الدرس بشكل ممتاز!':pct>=60?'جيد جداً! راجع الكلمات الصعبة.':'لا تيأس! راجع الدرس مرة أخرى.';
+  document.getElementById('sdет').textContent=msg;
   tts(msg);
 }
 
 function restartRev() {
-  document.getElementById('scoreCard').classList.remove('show');
-  generateQs(); startReview();
+  document.getElementById('scCard').classList.remove('show');
+  genQs(); startRev();
 }
 
-function showFb(t, c) {
-  const b = document.getElementById('fbBox');
-  b.textContent = t; b.className = `fb show ${c}`;
+function showFb(t,c) {
+  const b=document.getElementById('fb');
+  b.textContent=t; b.className=`fb show ${c}`;
 }
-function showOv(t) { document.getElementById('ovTxt').textContent = t; document.getElementById('ov').classList.add('show'); }
+function showOv(t) { document.getElementById('ot').textContent=t; document.getElementById('ov').classList.add('show'); }
 function hideOv() { document.getElementById('ov').classList.remove('show'); }
 </script>
 </body>
