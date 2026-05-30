@@ -142,6 +142,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <input type="password" id="elevenKey" placeholder="sk_...">
     </div>
     <button class="sbtn" onclick="saveKeys()">💾 حفظ المفاتيح</button>
+    <button class="sbtn" onclick="testKey()" style="margin-top:8px;background:#059669">🔍 اختبر المفتاح الآن</button>
+    <div id="testResult" style="margin-top:10px;font-size:13px;display:none;padding:10px;border-radius:8px"></div>
   </div>
 
   <div class="tabs">
@@ -269,6 +271,33 @@ function saveKeys() {
   document.getElementById('settingsPanel').classList.remove('open');
 }
 
+async function testKey() {
+  const g = document.getElementById("geminiKey").value.trim();
+  const box = document.getElementById("testResult");
+  if (!g) { alert("أدخل المفتاح أولاً"); return; }
+  box.style.display = "block";
+  box.style.background = "rgba(59,130,246,.1)";
+  box.style.color = "#93c5fd";
+  box.textContent = "⏳ جاري الاختبار...";
+  try {
+    const r = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=" + g, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ contents: [{ parts: [{ text: "قل مرحبا فقط" }] }] })
+    });
+    const d = await r.json();
+    if (d.error) throw new Error(d.error.message);
+    box.style.background = "rgba(16,185,129,.1)";
+    box.style.color = "#6ee7b7";
+    box.textContent = "✅ المفتاح يعمل بشكل صحيح!";
+    S.gemini = g; localStorage.setItem("gk", g);
+  } catch(e) {
+    box.style.background = "rgba(239,68,68,.1)";
+    box.style.color = "#fca5a5";
+    box.textContent = "❌ خطأ: " + e.message;
+  }
+}
+
 function switchTab(t) {
   document.querySelectorAll('.tab').forEach((b,i) => b.classList.toggle('on', (t==='learn'&&i===0)||(t==='review'&&i===1)));
   document.getElementById('learnTab').classList.toggle('hidden', t!=='learn');
@@ -315,7 +344,7 @@ async function analyzeLesson() {
 {"title":"عنوان الدرس","words":[{"english":"كلمة","phonetic":"نطق","arabic":"معنى","example":"جملة إنجليزية","example_ar":"ترجمة"}],"grammar_notes":["ملاحظة"],"story_summary":"ملخص النص إن وجد"}`;
 
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${S.gemini}`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${S.gemini}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -528,7 +557,7 @@ async function processRec() {
   const q = S.questions[S.qIdx];
   showOv('جاري تقييم نطقك...');
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${S.gemini}`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${S.gemini}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
