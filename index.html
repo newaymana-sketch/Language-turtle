@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>مُعلّمي - Ibrahim Adel</title>
+<title>مُعلّمي - Ibrahim Adel Vocabulary Tutor</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0e1a;--s1:#111827;--s2:#1a2235;--br:#1e2d45;--ac:#3b82f6;--ac2:#06b6d4;--gd:#f59e0b;--tx:#e2e8f0;--mu:#64748b;--gr:#10b981;--rd:#ef4444;--r:16px}
@@ -27,10 +27,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .ig input{width:100%;background:var(--bg);border:1px solid var(--br);border-radius:10px;padding:10px 14px;color:var(--tx);font-family:'Tajawal',sans-serif;font-size:13px;direction:ltr}
 .ig input:focus{outline:none;border-color:var(--ac)}
 .btn{width:100%;padding:11px;border:none;border-radius:10px;color:#fff;font-family:'Tajawal',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:.2s;margin-bottom:8px}
-.btn-blue{background:var(--ac)}
-.btn-green{background:#059669}
-.btn-blue:hover{background:#2563eb}
-.btn-green:hover{background:#047857}
+.btn-blue{background:var(--ac)}.btn-blue:hover{background:#2563eb}
+.btn-green{background:#059669}.btn-green:hover{background:#047857}
 .test-res{border-radius:10px;padding:10px 14px;font-size:13px;line-height:1.6;display:none;margin-top:4px}
 .tabs{display:flex;background:var(--s1);border:1px solid var(--br);border-radius:12px;padding:4px;margin-bottom:16px}
 .tab{flex:1;padding:10px;border:none;background:transparent;color:var(--mu);font-family:'Tajawal',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border-radius:8px;transition:.2s}
@@ -101,8 +99,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .fb.show{display:block}
 .fb.ok{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);color:var(--gr)}
 .fb.err{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#fca5a5}
-.sc{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(6,182,212,.1));border:1px solid rgba(59,130,246,.2);border-radius:var(--r);padding:24px;text-align:center;margin-bottom:16px;display:none}
-.sc.show{display:block}
+.sccard{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(6,182,212,.1));border:1px solid rgba(59,130,246,.2);border-radius:var(--r);padding:24px;text-align:center;margin-bottom:16px;display:none}
+.sccard.show{display:block}
 .se{font-size:48px;margin-bottom:12px}
 .sn{font-size:48px;font-weight:900;color:var(--ac);font-family:'Playfair Display',serif}
 .sl{font-size:14px;color:var(--mu);margin-top:4px}
@@ -111,7 +109,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .ov.show{display:flex}
 .sp{width:56px;height:56px;border:3px solid rgba(59,130,246,.2);border-top-color:var(--ac);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.ot{font-size:15px;color:var(--mu)}
+.ot{font-size:15px;color:var(--mu);text-align:center;padding:0 20px}
 .hidden{display:none!important}
 </style>
 </head>
@@ -129,7 +127,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <input type="password" id="groqKey" placeholder="gsk_...">
     </div>
     <div class="ig">
-      <label>ElevenLabs API Key (اختياري - للصوت)</label>
+      <label>ElevenLabs API Key (اختياري - للصوت الطبيعي)</label>
       <input type="password" id="elevenKey" placeholder="sk_...">
     </div>
     <button class="btn btn-blue" onclick="saveKeys()">💾 حفظ المفاتيح</button>
@@ -147,7 +145,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <input type="file" id="fi" accept="image/*" onchange="handleFile(event)" style="display:none">
       <div class="ico">📷</div>
       <h3>صوّر صفحة الدرس</h3>
-      <p>اضغط هنا لاختيار صورة أو التقاطها</p>
+      <p>اضغط هنا لاختيار صورة أو التقاطها بالكاميرا</p>
     </div>
     <div class="prev" id="prev">
       <img id="prevImg" src="" alt="">
@@ -194,11 +192,11 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <div class="fb" id="fb"></div>
       <button class="act pri hidden" id="nxtBtn" onclick="nextQ()" style="width:100%;margin-bottom:16px">التالي ←</button>
     </div>
-    <div class="sc" id="scCard">
+    <div class="sccard" id="scCard">
       <div class="se" id="se">🎉</div>
       <div class="sn" id="sn">0/10</div>
       <div class="sl">نتيجتك النهائية</div>
-      <div class="sd" id="sdет"></div>
+      <div class="sd" id="sdet"></div>
       <div style="display:flex;gap:10px;margin-top:20px">
         <button class="act pri" onclick="restartRev()" style="flex:1">🔄 أعد المراجعة</button>
         <button class="act" onclick="sw('learn')" style="flex:1">📚 درس جديد</button>
@@ -216,7 +214,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 const S = {
   groq: localStorage.getItem('groq') || '',
   eleven: localStorage.getItem('eleven') || '',
-  img64: null, imgType: 'image/jpeg',
+  img64: null,
   lesson: null, questions: [], qIdx: 0, score: 0,
   recording: false, recorder: null, chunks: [], audio: null
 };
@@ -236,8 +234,8 @@ function saveKeys() {
   S.groq = g; S.eleven = e;
   localStorage.setItem('groq', g);
   if (e) localStorage.setItem('eleven', e);
-  document.getElementById('sbox').classList.remove('open');
-  showRes('✅ تم حفظ المفاتيح', 'ok');
+  showRes('✅ تم حفظ المفاتيح! اضغط اختبر المفتاح للتأكد', 'ok');
+  setTimeout(()=>document.getElementById('sbox').classList.remove('open'), 2000);
 }
 
 async function testKey() {
@@ -249,9 +247,9 @@ async function testKey() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + g },
       body: JSON.stringify({
-        model: 'llama-3.2-11b-vision-preview',
-        messages: [{ role: 'user', content: 'قل مرحبا فقط' }],
-        max_tokens: 10
+        model: 'llama-3.3-70b-versatile',
+        messages: [{ role: 'user', content: 'رد فقط بكلمة ok' }],
+        max_tokens: 5
       })
     });
     const d = await r.json();
@@ -267,7 +265,7 @@ function showRes(txt, type) {
   const b = document.getElementById('testRes');
   b.style.display = 'block';
   b.style.background = type==='ok'?'rgba(16,185,129,.1)':type==='err'?'rgba(239,68,68,.1)':'rgba(59,130,246,.1)';
-  b.style.border = '1px solid ' + (type==='ok'?'rgba(16,185,129,.2)':type==='err'?'rgba(239,68,68,.2)':'rgba(59,130,246,.2)');
+  b.style.border = '1px solid '+(type==='ok'?'rgba(16,185,129,.2)':type==='err'?'rgba(239,68,68,.2)':'rgba(59,130,246,.2)');
   b.style.color = type==='ok'?'#6ee7b7':type==='err'?'#fca5a5':'#93c5fd';
   b.textContent = txt;
 }
@@ -281,7 +279,6 @@ function sw(t) {
 function handleFile(e) {
   const f = e.target.files[0];
   if (!f) return;
-  S.imgType = f.type || 'image/jpeg';
   const r = new FileReader();
   r.onload = ev => {
     const img = new Image();
@@ -289,7 +286,7 @@ function handleFile(e) {
       const c = document.createElement('canvas');
       const MAX = 1024;
       let w = img.width, h = img.height;
-      if (w>MAX||h>MAX) { if(w>h){h=Math.round(h*MAX/w);w=MAX;}else{w=Math.round(w*MAX/h);h=MAX;} }
+      if (w>MAX||h>MAX){if(w>h){h=Math.round(h*MAX/w);w=MAX;}else{w=Math.round(w*MAX/h);h=MAX;}}
       c.width=w; c.height=h;
       c.getContext('2d').drawImage(img,0,0,w,h);
       const comp = c.toDataURL('image/jpeg',.8);
@@ -305,31 +302,38 @@ function handleFile(e) {
 }
 
 async function groqCall(messages, withImg=false) {
-  const body = {
-    model: withImg ? 'llama-3.2-11b-vision-preview' : 'llama-3.3-70b-versatile',
-    messages,
-    max_tokens: 2000,
-    temperature: 0.2
-  };
   const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + S.groq },
-    body: JSON.stringify(body)
+    body: JSON.stringify({
+      model: withImg ? 'llama-3.2-90b-vision-preview' : 'llama-3.3-70b-versatile',
+      messages,
+      max_tokens: 2000,
+      temperature: 0.2
+    })
   });
   const d = await r.json();
   if (d.error) throw new Error(d.error.message);
   return d.choices[0].message.content;
 }
 
+function safeParseJSON(str) {
+  let s = str.replace(/```json\s*/g,'').replace(/```\s*/g,'').trim();
+  const a = s.indexOf('{'), b = s.lastIndexOf('}');
+  if (a > 0) s = s.slice(a);
+  if (b > 0) s = s.slice(0, s.lastIndexOf('}')+1);
+  return JSON.parse(s);
+}
+
 async function analyze() {
   if (!S.groq) { alert('أدخل مفتاح Groq من الإعدادات ⚙️'); toggleS(); return; }
   if (!S.img64) { alert('اختر صورة أولاً'); return; }
-  showOv('⏳ جاري قراءة وتحليل الدرس...');
+  showOv('⏳ جاري قراءة وتحليل الدرس...\n(قد يستغرق 20-30 ثانية)');
   document.getElementById('aBtn').disabled = true;
 
-  const prompt = `أنت مُعلّم لغة إنجليزية. حلّل هذه الصفحة من كتاب مفردات.
-أعطني JSON فقط بدون أي نص إضافي أو backticks أو markdown:
-{"title":"عنوان الدرس","words":[{"english":"كلمة","phonetic":"نطق","arabic":"معنى","example":"جملة إنجليزية","example_ar":"ترجمة"}],"grammar_notes":["ملاحظة نحوية"],"story_summary":"ملخص النص إن وجد وإلا اتركه فارغاً"}`;
+  const prompt = `أنتَ مُعلّم لغة إنجليزية خبير. حلّل هذه الصفحة من كتاب مفردات بدقة.
+أعطني JSON فقط بدون أي نص إضافي أو backticks أو markdown. استخدم هذا الهيكل بالضبط:
+{"title":"عنوان الدرس","words":[{"english":"كلمة","phonetic":"نطق","arabic":"معنى","example":"جملة إنجليزية","example_ar":"ترجمة"}],"grammar_notes":["ملاحظة نحوية"],"story_summary":"ملخص النص إن وجد"}`;
 
   try {
     const txt = await groqCall([{
@@ -340,8 +344,7 @@ async function analyze() {
       ]
     }], true);
 
-    let clean = txt.replace(/```json|```/g,'').trim();
-    S.lesson = JSON.parse(clean);
+    S.lesson = safeParseJSON(txt);
     hideOv();
     renderLesson();
     genQs();
@@ -349,7 +352,7 @@ async function analyze() {
   } catch(err) {
     hideOv();
     document.getElementById('aBtn').disabled = false;
-    alert('خطأ: ' + err.message + '\n\nتأكد من صحة مفتاح Groq واضغط اختبر المفتاح أولاً');
+    alert('خطأ: ' + err.message + '\n\nتأكد من:\n1. صحة مفتاح Groq\n2. وضوح الصورة\n3. اضغط "اختبر المفتاح" أولاً');
   }
 }
 
@@ -360,7 +363,7 @@ function renderLesson() {
   words.forEach((w,i) => {
     h += `<div class="wc">
       <div class="wt">
-        <div><div class="we">${i+1}. ${w.english}</div><div class="wp">${w.phonetic}</div></div>
+        <div><div class="we">${i+1}. ${w.english}</div><div class="wp">${w.phonetic||''}</div></div>
         <button class="ws" onclick="spkW('${w.english.replace(/'/g,"\\'")}',this)">🔊</button>
       </div>
       <div class="wa">📖 ${w.arabic}</div>
@@ -373,13 +376,16 @@ function renderLesson() {
     grammar_notes.forEach(n => h += `<div class="ni">${n}</div>`);
     h += `</div>`;
   }
-  if (story_summary) h += `<div class="nt"><h3>📖 ملخص النص</h3><div class="ni">${story_summary}</div></div>`;
+  if (story_summary && story_summary.trim()) {
+    h += `<div class="nt"><h3>📖 ملخص النص</h3><div class="ni">${story_summary}</div></div>`;
+  }
   document.getElementById('lcon').innerHTML = h;
   document.getElementById('lbox').classList.add('show');
   document.getElementById('lacts').style.display = 'flex';
 }
 
 async function tts(text) {
+  if (!text) return;
   if (S.eleven) {
     try {
       const r = await fetch('https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM', {
@@ -391,8 +397,7 @@ async function tts(text) {
         const blob = await r.blob();
         const url = URL.createObjectURL(blob);
         if (S.audio) S.audio.pause();
-        S.audio = new Audio(url);
-        S.audio.play();
+        S.audio = new Audio(url); S.audio.play();
         return S.audio;
       }
     } catch(e) {}
@@ -418,9 +423,9 @@ async function speakAll() {
   b.textContent='⏸ جاري...'; b.disabled=true;
   let t = `درس ${S.lesson.title}. `;
   S.lesson.words.forEach(w => { t+=`${w.english}. ${w.arabic}. ${w.example}. `; });
-  if (S.lesson.story_summary) t+=`ملخص: ${S.lesson.story_summary}`;
+  if (S.lesson.story_summary?.trim()) t+=`ملخص: ${S.lesson.story_summary}`;
   await tts(t);
-  b.textContent='🔊 استمع'; b.disabled=false;
+  setTimeout(()=>{ b.textContent='🔊 استمع'; b.disabled=false; }, 1000);
 }
 
 function genQs() {
@@ -474,11 +479,11 @@ function showQ() {
     document.getElementById('rl').textContent='اضغط للتسجيل';
     document.getElementById('recBtn').classList.remove('go');
     document.getElementById('recBtn').textContent='🎤';
-    setTimeout(()=>tts(q.q),300);
+    setTimeout(()=>tts(q.q), 300);
   }
 }
 
-function checkAns(sel,btn) {
+function checkAns(sel, btn) {
   const q=S.questions[S.qIdx];
   document.querySelectorAll('.op').forEach(b=>b.disabled=true);
   if (sel===q.ans) {
@@ -525,18 +530,23 @@ function stopRec() {
 
 async function processRec() {
   const q=S.questions[S.qIdx];
-  showOv('جاري تقييم نطقك...');
+  showOv('جاري تقديم نصائح النطق...');
   try {
     const txt = await groqCall([{
       role:'user',
-      content:`قدّم نصائح نطق مختصرة ومشجعة لكلمة "${q.q}" في 2-3 جمل بالعربية. اذكر: النطق بالحروف العربية، الصوت الصعب، جملة تشجيع.`
+      content:`قدّم نصائح نطق مختصرة ومشجعة باللغة العربية لكلمة "${q.q}". اشرح مخارج الحروف الصعبة، واكتب تقريباً كيفية نطقها بالحروف العربية، ثم شجّع الطالب. لا تتجاوز 3 جمل.`
     }], false);
     const box=document.getElementById('ev');
     box.innerHTML=`<strong style="color:var(--ac)">🎤 نصائح النطق:</strong><br>${txt}`;
     box.classList.add('show');
     tts(txt);
     S.score+=0.5;
-  } catch(e) {}
+  } catch(e) {
+    const box=document.getElementById('ev');
+    box.innerHTML=`<strong>🎤 نصيحة:</strong><br>حاول نطق "${q.q}" ببطء، ركز على المقطع الأول. استمر بالممارسة!`;
+    box.classList.add('show');
+    S.score+=0.5;
+  }
   hideOv();
   document.getElementById('rl').textContent='اضغط للتسجيل مجدداً';
   document.getElementById('nxtBtn').classList.remove('hidden');
@@ -550,7 +560,7 @@ function showFinal() {
   document.getElementById('sn').textContent=`${s}/${tot}`;
   document.getElementById('se').textContent=pct>=80?'🏆':pct>=60?'⭐':'💪';
   const msg=pct>=80?'رائع! أتقنت الدرس بشكل ممتاز!':pct>=60?'جيد جداً! راجع الكلمات الصعبة.':'لا تيأس! راجع الدرس مرة أخرى.';
-  document.getElementById('sdет').textContent=msg;
+  document.getElementById('sdet').textContent=msg;
   tts(msg);
 }
 
@@ -563,8 +573,8 @@ function showFb(t,c) {
   const b=document.getElementById('fb');
   b.textContent=t; b.className=`fb show ${c}`;
 }
-function showOv(t) { document.getElementById('ot').textContent=t; document.getElementById('ov').classList.add('show'); }
-function hideOv() { document.getElementById('ov').classList.remove('show'); }
+function showOv(t){document.getElementById('ot').textContent=t;document.getElementById('ov').classList.add('show');}
+function hideOv(){document.getElementById('ov').classList.remove('show');}
 </script>
 </body>
 </html>
