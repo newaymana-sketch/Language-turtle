@@ -247,7 +247,7 @@ async function testKey() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + g },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: 'llama-3.1-8b-instant',
         messages: [{ role: 'user', content: 'رد فقط بكلمة ok' }],
         max_tokens: 5
       })
@@ -301,20 +301,35 @@ function handleFile(e) {
   r.readAsDataURL(f);
 }
 
+// نماذج الرؤية مرتبة من الأحدث للأقدم
+const VISION_MODELS = [
+  'meta-llama/llama-4-scout-17b-16e-instruct',
+  'meta-llama/llama-4-maverick-17b-128e-instruct',
+  'llama-3.2-90b-vision-preview'
+];
+
 async function groqCall(messages, withImg=false) {
-  const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + S.groq },
-    body: JSON.stringify({
-      model: withImg ? 'llama-3.2-90b-vision-preview' : 'llama-3.3-70b-versatile',
-      messages,
-      max_tokens: 2000,
-      temperature: 0.2
-    })
-  });
-  const d = await r.json();
-  if (d.error) throw new Error(d.error.message);
-  return d.choices[0].message.content;
+  const models = withImg ? VISION_MODELS : ['llama-3.1-8b-instant'];
+  let lastError = null;
+  for (const model of models) {
+    try {
+      const r = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + S.groq },
+        body: JSON.stringify({ model, messages, max_tokens: 2000, temperature: 0.2 })
+      });
+      const d = await r.json();
+      if (d.error) {
+        lastError = d.error.message;
+        continue; // جرب النموذج التالي
+      }
+      return d.choices[0].message.content;
+    } catch(e) {
+      lastError = e.message;
+      continue;
+    }
+  }
+  throw new Error(lastError || 'فشل الاتصال بجميع النماذج');
 }
 
 function safeParseJSON(str) {
